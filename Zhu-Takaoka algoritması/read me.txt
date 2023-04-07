@@ -1,0 +1,27 @@
+Sonuç olarak, Zhu-Takaoka algoritması, boyuna bir arama algoritmasıdır ve arama işleminin süresi, aranan kelimenin boyutu, metnin büyüklüğü ve aranan kelimenin konumu gibi faktörlere bağlı olarak değişebilir. 
+Ancak, kullanılan optimizasyon teknikleri sayesinde, genellikle diğer boyuna arama algoritmalarından daha hızlı çalışır.
+Zhu-Takaoka algoritması, verilen bir karakter dizisinin benzersiz bir hash değerini hesaplamak için kullanılan bir algoritmadır. 
+Bu algoritma, her karakter için önceden belirlenmiş bir sayı olan bir sabit (sıklıkla 31) ile çarpılan bir önceki hash değerine eklenen karakterin ASCII değerini kullanır. 
+Bu işlem sonucunda elde edilen sonuç, verilen karakter dizisinin hash değeridir.
+
+Örneğin, "hello" karakter dizisi için Zhu-Takaoka algoritması kullanarak hesaplanan hash değeri şu şekildedir:
+
+hash = 0
+hash = 31 * 0 + 'h' = 104
+hash = 31 * 104 + 'e' = 3208
+hash = 31 * 3208 + 'l' = 99592
+hash = 31 * 99592 + 'l' = 3087112
+hash = 31 * 3087112 + 'o' = 95644664
+Sonuç olarak, "hello" karakter dizisinin hash değeri 95644664'tür. Bu hash değeri, karakter dizisi için benzersiz bir tanımlayıcı olarak kullanılabilir ve sözlüklerde anahtar olarak saklanabilir. 
+Bu sayede, karakter dizileri arasındaki eşleşmeler hızlı bir şekilde bulunabilir.
+
+
+
+
+Zhu-Takaoka algoritması, string arama işlemi yaparken boyuna bir yaklaşım kullanır. 
+Bu nedenle, en kötü durumda, tüm metnin tamamını aramak zorunda kalabilir.
+Bu durumda, algoritmanın çalışma zamanı O(nm) olacaktır, burada n, metnin boyutu ve m, aranan kelimenin boyutudur.
+Ancak, bu algoritma birçok optimizasyon teknikleri kullanır ve özellikle, karşılaştırmaların sayısını azaltmak için kullandığı önek fonksiyonleri ile öne çıkar. 
+En iyi durumda, aranan kelimeyi ilk karakterden eşleştirerek arama işlemi tamamlanabilir. Bu durumda, algoritmanın çalışma zamanı sadece O(m) olacaktır.
+Ortalama durumda, algoritma O(n/m) sıklıkla çalışır. Bunun nedeni, arama işleminin metnin büyüklüğüne bağlı olmasıdır, ancak aranan kelimenin boyutu ile doğru orantılı değildir. 
+Özellikle, algoritma birkaç karakter eşleştirmesi ile arama işlemini tamamlayabilir.
